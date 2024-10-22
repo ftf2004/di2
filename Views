@@ -1,0 +1,41 @@
+
+VIEWS
+
+1.	Create a view supplier_view with columns sid, sname, pid. See the contents of the view    	created.
+
+CREATE VIEW supplier_view AS
+SELECT sid, sname, pid FROM supplier;
+
+SELECT * FROM supplier_view;
+
+2.	Create a complex view on customers and orders and check the base tables after updation
+
+CREATE VIEW customer_orders_view AS
+SELECT c.cust_name, o.ord_no, o.purch_amt
+FROM customer c
+JOIN orders o ON c.cust_id = o.cust_id;
+
+UPDATE customer_orders_view
+SET purch_amt = 1500
+WHERE ord_no = 1;
+
+SELECT * FROM orders;
+
+3.	create a view for displaying a sname whose sid=4?
+
+CREATE VIEW sname_view AS
+SELECT sname FROM supplier WHERE sid = 4;
+
+4.	Create and Update a view for Passenger table as ticket_no,ppno,gender.
+
+CREATE VIEW passenger_view AS
+SELECT ticket_no, ppno, gender FROM passenger;
+
+UPDATE passenger_view
+SET gender = 'F'
+WHERE ticket_no = 123;
+
+5.	create a view for displaying sname having cid=3?	
+
+CREATE VIEW supplier_name_view AS
+SELECT sname FROM supplier WHERE cid = 3;
